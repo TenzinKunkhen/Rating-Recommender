@@ -15,7 +15,8 @@ class MovieItem extends React.Component {
 
         this.state = {
             rating: this.props.movie.vote_average / 2,
-            movieTitle: this.props.movie.title
+            movieTitle: this.props.movie.title,
+            username: this.props.username
         };
     }
 
@@ -24,7 +25,7 @@ class MovieItem extends React.Component {
         this.setState({rating: data.rating, movieTitle: this.props.movie.title})
 
         axios.post('/rateMovie/setRating', {
-                username: 'abc',
+                username: this.state.username,
                 rating: this.state.rating,
                 movieTitle: this.state.movieTitle
             })

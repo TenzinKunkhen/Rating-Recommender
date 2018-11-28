@@ -58,13 +58,14 @@ class App extends Component {
         {this.state.loggedIn &&
         <div>
           <p>Join the party, {this.state.username}!</p>
-          <Home />
+         <Home username={this.state.username}/>
   </div>
         }
         {/* Routes to different components */}
-        <Route
+        {/* <Route
           exact path="/"
-          component={Home} />
+          component={Home} /> */}
+          
         <Route
           path="/login"
           render={() =>

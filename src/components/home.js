@@ -6,7 +6,7 @@ import axios from 'axios';
 
 
 class Home extends React.Component {
-    state = { movies: [], selectedMovie: null };
+    state = { movies: [], selectedMovie: null, username: this.props.username };
 
     onSearchSubmit = async (term) => {
         const response = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=5ea2ebc7fdf47f11a122485b65cbd0fa&language=en-US&query=${term}&page=1&include_adult=true}`,
@@ -27,7 +27,8 @@ class Home extends React.Component {
             <div className="ui container" style={{ marginTop: '10px' }}>
                 <SearchBar onSubmit={this.onSearchSubmit} />
                 Found: {this.state.movies.length} movies
-                <MovieList movies={this.state.movies}></MovieList>
+                <p>Welcome to the search bar: {this.state.username} !</p>
+                <MovieList movies={this.state.movies} username={this.state.username}></MovieList>
                
             </div>
         );
