@@ -10,7 +10,7 @@ class MovieItem extends React.Component {
 
         this.state = {
             rating: this.props.movie.vote_average / 2,
-            movieTitle: this.props.movie.title,
+            title: this.props.movie.title,
             username: this.props.username,
             movieID: this.props.movie.id
         };
@@ -21,19 +21,20 @@ class MovieItem extends React.Component {
     
 
     onStarClick(event, data) {
-        this.setState({rating: data.rating, movieTitle: this.props.movie.title, movieID:this.props.movie.id})
+        this.setState({rating: data.rating, title: this.props.movie.title, movieID:this.props.movie.id})
 
       }
 
     componentDidMount() {
         console.log(this.props.movie);
     }
+    
       componentDidUpdate() {
           console.log(this.state.rating);
           axios.post('/rateMovie/setRating', {
             username: this.state.username,
             rating: this.state.rating,
-            movieTitle: this.state.movieTitle,
+            title: this.state.title,
             movieID: this.state.movieID
         })
         .then(response => {

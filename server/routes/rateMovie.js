@@ -4,9 +4,19 @@ const Rating = require('../database/models/rating')
 
 
 router.get('/rated', (req,res) => {
-    Rating.find()
-    .then(rating => res.json(rating ));
+    Rating.find(req.body.username)
+    .then(rating => res.json(rating));
+
 })
+
+router.get('/recommend', (req,res) => {
+
+    Rating.find(req.body.title, 'username title movieID rating', function (err, rating) {
+        if (err) return handleError(err);
+        // 'athletes' contains the list of athletes that match the criteria.
+      }).then(rating => res.json(rating));
+})
+
 
 router.post('/setRating', (req, res) => {
     
@@ -20,12 +30,12 @@ router.post('/setRating', (req, res) => {
     Rating.updateOne(
         {
           username: req.body.username,
-          movieTitle: req.body.movieTitle,
+          title : req.body.title,
           movieID: req.body.movieID
         },
         {
           username: req.body.username,
-          movieTitle: req.body.movieTitle,
+          title: req.body.title,
           movieID: req.body.movieID,
           rating: req.body.rating
         },
@@ -34,6 +44,5 @@ router.post('/setRating', (req, res) => {
 
     // newRating.save().then(user => res.json(user));
 });
-
 
 module.exports = router;

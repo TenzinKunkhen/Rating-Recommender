@@ -28,10 +28,16 @@ class Home extends React.Component {
             <div className="ui container" style={{ marginTop: '10px' }}>
                 <SearchBar onSubmit={this.onSearchSubmit} />
                 Found: {this.state.movies.length} movies
-                <RecommendedList />
+            
                 <p>Welcome to the search bar: {this.state.username} !</p>
-                <MovieList movies={this.state.movies} username={this.state.username}></MovieList>
+               <h1> Your movie List:</h1>
+               <MovieList movies={this.state.movies} username={this.state.username}></MovieList>
                
+               <div className="ui container">
+               <h1>Your Recommended List:</h1>
+                <RecommendedList movies={this.state.movies} username={this.state.username}/>
+               </div>
+              
             </div>
         );
     }

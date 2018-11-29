@@ -43,3 +43,8 @@ app.use('/rateMovie', rating)
 app.listen(PORT, () => {
 	console.log(`App listening on PORT: ${PORT}`)
 })
+
+// app.use('/todos/:id', function (req, res, next) {
+//   console.log('Request Id:', req.params.id);
+//   next();
+// });

@@ -7,8 +7,6 @@ const MovieList = ({movies, username}) => {
     });
     return (
        <div className="ui relaxed divided list"> {renderedList}
-             <div><p>Now youre in MovieList ! {username}</p></div>  
-
        </div>
     );
 }
